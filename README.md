@@ -1,56 +1,79 @@
 # AI for Optimal Power Flow
-This tutorial introduces **AI for AC Optimal Power Flow (AC-OPF)** using a small 5-bus power network and PyTorch-based neural networks. The goal is to learn the full workflow: formulate a basic AC-OPF problem, generate or load solver labels, train ML approximators, evaluate them with OPF-aware metrics, and understand the limits of using ML for grid operation.
 
-**Version released in 2023**
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-Neural%20Networks-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Climate AI](https://img.shields.io/badge/Climate%20AI-Power%20Systems-2E8B57)](https://www.climatechange.ai/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-* Jorge Montalvo, CCAI, jorge@climatechange.ai
-* Utkarsha Agwan, uagwan@berkeley.edu
-* Panos Moutis, panay1ot1s@climatechange.ai
+A hands-on machine-learning workflow for approximating **AC Optimal Power Flow (AC-OPF)** on a five-bus electricity network. The project connects power-system optimization with PyTorch and evaluates predictions using operationally meaningful constraints—not accuracy alone.
 
-**Version revised and released in 2024**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lonfea/optimal-power-flow/blob/main/AI_for_Optimal_Power_Flow.ipynb)
 
-* Enming Liang, enming.cityu@gmail.com
-* Advising comments from Priya L. Donti (MIT) and Minghua Chen (CityU, HK)
+## Why this project matters
 
-**Version revised and released in 2026**
+Power-system operators repeatedly solve AC-OPF to determine economically efficient generator schedules while respecting nonlinear grid constraints. Neural approximators may accelerate this process, but an apparently accurate prediction can still violate voltage, generator, or transmission limits. This tutorial therefore treats feasibility and physical consistency as first-class evaluation criteria.
 
-* Enming Liang, enming.cityu@gmail.com
-* Advising comments from the CCAI Virtual Summer School Organizing Committee and Minghua Chen (CUHK-SZ)
+## Project workflow
 
-## Access this tutorial
+1. Represent a five-bus power network and formulate the AC-OPF problem.
+2. Generate or load optimization-solver labels.
+3. Prepare operating conditions and targets for supervised learning.
+4. Train PyTorch neural networks to approximate OPF solutions.
+5. Compare predictions with solver outputs.
+6. Evaluate constraint violations and discuss safe deployment limits.
 
-We recommend executing this notebook in a Colab environment to gain access to GPUs and to manage all necessary dependencies. <a target="_blank" href="https://colab.research.google.com/github/climatechange-ai-tutorials/optimal-power-flow/blob/main/AI_for_Optimal_Power_Flow.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
+## Skills demonstrated
 
-## Contribute to this tutorial
+- Nonlinear optimization and AC power-flow fundamentals
+- PyTorch model development and supervised learning
+- Physics-aware and constraint-aware evaluation
+- Energy-system data preparation
+- Critical assessment of AI in safety-sensitive infrastructure
 
-Please refer to these [GitHub instructions](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#about-forking) to open a pull request via the "fork and pull request" workflow. 
+## Repository contents
 
-Pull requests will be reviewed by members of the Climate Change AI Tutorials team for relevance, accuracy, and conciseness.
+- `AI_for_Optimal_Power_Flow.ipynb` — complete executable tutorial
+- `data/` and supporting assets — network inputs and experiment resources
+- `LICENSE` — MIT License
 
-## Climate Change AI Tutorials
-Check out the [tutorials page](https://www.climatechange.ai/tutorials?) on our website for a full list of tutorials demonstrating how AI can be used to tackle problems related to climate change.
+## Responsible use
 
-## License
-Usage of this tutorial is subject to the MIT License.
+This is an educational approximation workflow, not a production grid-control system. Operational use requires validated network models, robust feasibility recovery, uncertainty analysis, and review by qualified power-system engineers.
 
-## Cite
+## Portfolio note and provenance
 
-### Plain Text
-Montalvo, J., Agwan, U., Moutis, P., Liang, E. (2026). AI for Optimal Power Flow [Tutorial]. In Climate Change AI Summer School. Climate Change AI. https://doi.org/10.5281/zenodo.21827296
+This repository is my portfolio fork and study implementation of the **Climate Change AI** tutorial. The tutorial design, notebook, and scientific content are credited to the original creators below. My fork preserves that attribution and provides a portfolio-oriented project overview.
 
-### BibTeX
+### Original creators
 
-```
+**2023 release**
+
+- Jorge Montalvo, Climate Change AI
+- Utkarsha Agwan, University of California, Berkeley
+- Panos Moutis, Climate Change AI
+
+**2024 and 2026 revisions**
+
+- Enming Liang
+- Advising contributions from Priya L. Donti, Minghua Chen, and the CCAI Virtual Summer School Organizing Committee
+
+## Citation
+
+Montalvo, J., Agwan, U., Moutis, P., & Liang, E. (2026). *AI for Optimal Power Flow* [Tutorial]. Climate Change AI Summer School. https://doi.org/10.5281/zenodo.21827296
+
+```bibtex
 @misc{montalvo2026ai,
   title={AI for Optimal Power Flow},
   author={Montalvo, Jorge and Agwan, Utkarsha and Moutis, Panos and Liang, Enming},
   year={2026},
   organization={Climate Change AI},
   type={Tutorial},
-  doi={https://doi.org/10.5281/zenodo.21827296},
+  doi={10.5281/zenodo.21827296},
   booktitle={Climate Change AI Summer School},
   howpublished={\url{https://github.com/climatechange-ai-tutorials/optimal-power-flow}}
 }
 ```
+
+## License
+
+Released under the [MIT License](LICENSE).
